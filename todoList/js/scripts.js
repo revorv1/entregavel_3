@@ -1,39 +1,99 @@
 // Clase
 
 class ToDo {
+  Texto 
+  Prioridade 
+  Feito = false 
+  constructor (texto, prioridade) {
+    this.Texto = texto 
+    this.Prioridade = prioridade
+  }
 
 }
 
 // Array
-
+let arrayTodos = []
 
 //funções projeto
 
-function CriarToDo() {
+function CriarToDo(texto, prioridade, array) {
+let toDo = new ToDo(texto, prioridade) 
+
+
+if (array.some((elemento)=> elemento.Texto == texto) == false ) {
+array.push(toDo)
+} return toDo
 
 }
 
-function AtualizarToDo() {
 
-}
+function AtualizarToDo(textoAntigo, textoNovo , array) {
+array.forEach(elemento => {
+  if(elemento.Texto == textoAntigo) {
+    elemento.Texto = textoNovo
+   
+  } 
+});
+return true
 
-function ConcluirToDo() {
-
-}
-
-function ExcluirToDo() {
-
-}
-
-function PesquisarToDo() {
  
+ 
+
 }
 
-function OrdenarCrescente() {
+
+function ConcluirToDo(array, texto) {
+
+    array.forEach(elemento => {
+      if(elemento.Texto == texto) {
+         if(elemento.Feito == true) {
+      elemento.Feito = false
+    } else {
+      elemento.Feito = true
+    } 
+      }
+    
+    });
+    return true
+  }
+
+
+function ExcluirToDo(array, texto) {
+  let j = 0;
+    for(let i = 0; i < array.length; i++) {
+   if (array[i].Texto == texto) {
+    j++
+    array.splice(i, 1)
+    return true
+   }
+  
+ }if (j != 0)
+  return false
+}
+
+function PesquisarToDo(array, texto) {
+  let j = 0
+  for(let i = 0; i < array.length; i++) {
+    if (array[i].Texto == texto) {
+      return true
+
+ }
+  }if (j != 0)
+  return false
+}
+  
+   
+
+
+function OrdenarCrescente(array) {
+  array.sort((a, b)=> a.Prioridade - b.Prioridade)
+  return array
+
   
 }
-function OrdenarDecrescente() {
-  
+function OrdenarDecrescente(array) {
+  array.sort((a, b)=> b.Prioridade - a.Prioridade)
+  return array
 }
 
 // Seleção de elementos
